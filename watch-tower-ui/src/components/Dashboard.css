@@ -1,0 +1,48 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 92vh;
+  width: 100%;
+  /* padding: 0 100px 0 100px; */
+  /* background-color: #e6fff5; */
+}
+
+.title-handles {
+  background-color: #cccccc;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.heading {
+  margin-left: 80px;
+}
+
+.chart-container {
+  height: 80%;
+  background-color: white;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 25%;
+  /* border-style: solid; */
+  background-color: #efefef;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px;
+}
