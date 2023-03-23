@@ -31,13 +31,10 @@ function Navbar(props) {
         </div>
         <div className="options">
           <div>
-            <Link to="/">Dashboard</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </div>
           <div>
-            <Link to="/created-checklists">Checklists</Link>
-          </div>
-          <div>
-            <Link to="/jobs">Jobs</Link>
+            <Link to="/create-analytics">Viz-Studio</Link>
           </div>
         </div>
         <div className="account" onClick={handleAccountClick}>
@@ -56,15 +53,7 @@ function Navbar(props) {
       <div className="navbar">
         <div className="logo">
           <img className="delogo"></img>
-        </div>
-        <div className="options">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-          <div>&nbsp;</div>
+          <div className="appname">WatchTower</div>
         </div>
       </div>
     );

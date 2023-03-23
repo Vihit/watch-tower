@@ -2,24 +2,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
-  height: 92vh;
+  background: var(--main);
+  height: 100vh;
 }
 
 .scrum-svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  margin: 80px;
+  width: 65%;
+  /* margin: 80px; */
   height: 100%;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+  margin-bottom: 100px;
 }
 
 .login-screen {
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,24 +31,25 @@
 
 .scrum-svg > img {
   object-fit: cover;
-  max-width: 70%;
+  max-width: 80%;
 }
 
 .login-screen > div {
-  padding: 20px;
+  /* padding: 20px; */
+  margin: 20px;
   justify-content: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   justify-content: center;
-  align-self: center;
+  align-items: center;
 }
 
 .control {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   width: 60%;
   align-self: center;
 }
@@ -64,7 +66,7 @@
   width: 100%;
   border-radius: 25px;
   border-color: var(--white);
-  text-align: center;
+  /* text-align: center; */
 }
 
 ::placeholder {
@@ -93,7 +95,7 @@ select {
   border-style: hidden;
   font-weight: bolder;
   text-align: center;
-  color: var(--dark);
+  /* color: var(--dark); */
 }
 
 textarea {

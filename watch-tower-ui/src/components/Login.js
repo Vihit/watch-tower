@@ -46,7 +46,7 @@ function Login(props) {
         <svg
           width="709"
           height="447"
-          viewBox="0 80 650 185"
+          viewBox="55 100 600 170"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

@@ -1,0 +1,72 @@
+.app-lvl {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: calc(100%-40px);
+  margin: 10px 20px 0px;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--dark);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.466);
+}
+
+.app-lvl-name {
+  margin: 5px;
+  /* margin-bottom: 10px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viz-lvl {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+  padding: 0px 40px 0px 40px;
+  margin-bottom: 5px;
+}
+
+.viz-lvl-name {
+  background-color: var(--grey);
+  /* padding: 5px 10px; */
+  color: var(--main);
+  font-style: italic;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 10px; */
+}
+
+.viz-n {
+  flex-grow: 1;
+  padding: 5px 10px;
+  background-color: var(--light);
+  color: var(--white);
+  font-weight: bold;
+}
+
+.viz-i {
+  padding: 5px 10px;
+}
+
+.close-flex {
+  display: none;
+}
+
+.app-css {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.viz-count {
+  background-color: var(--main);
+  padding: 0px 8px;
+  color: var(--white);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: var(--dark);
   box-shadow: 0.5px 0.5px 7px;
   height: 8vh;
 }
@@ -15,7 +15,7 @@
 }
 
 .appname {
-  font-family: "Poppins";
+  font-family: "Reem Kufi";
   color: var(--white);
   font-weight: bold;
   font-size: 40px;
@@ -53,11 +53,18 @@
 
 .options > div {
   margin-right: 100px;
+  color: var(--white);
+  font-size: 16px;
+}
+
+.options > div > a {
+  margin-right: 100px;
+  color: var(--white);
 }
 
 .icon-account {
   font-size: 43.0703px;
-  color: white;
+  color: var(--white);
 }
 
 .account {
@@ -68,7 +75,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 30px;
-  border-color: white;
+  border-color: var(--white);
   border-style: solid;
   transition: filter 300ms;
 }
@@ -145,4 +152,14 @@ a {
 .user {
   background-color: var(--main);
   color: #ffffff;
+}
+
+.delogo {
+  padding: 5px 5px 5px 5px;
+  content: url("./../../public/delogo.png");
+  object-fit: fill;
+  height: 45px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }

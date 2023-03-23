@@ -1,0 +1,26 @@
+.creation-cell {
+  /* height: 100%; */
+  /* border: 1px solid red; */
+  margin: 2px;
+  background-color: #bcc1c56f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  cursor: pointer;
+  position: relative;
+}
+
+.item-drop {
+  opacity: 0.5;
+}
+
+.cell-name {
+  font-size: 16px;
+  position: absolute;
+  top: 10%;
+}
+
+.clicked-cell {
+  background-color: rgba(255, 149, 111, 0.439);
+}

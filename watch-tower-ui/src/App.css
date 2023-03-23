@@ -1,8 +1,11 @@
 :root {
-  --main: #00cfa0;
-  --white: #ecfdf6;
-  --dark: #00989d;
+  --main: #035950;
+  --white: #fffefd;
+  --light: #96c7c2;
+  --dark: #02584f;
   --black: #372b47;
+  --grey: #e0dfdf;
+  --dark-grey: #9a9898;
 }
 
 .App {
@@ -56,4 +59,19 @@ a:visited {
 ::-webkit-scrollbar-thumb {
   background: #00989d7b;
   border-radius: 20px;
+}
+
+select {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: black;
+  padding-left: 10px;
+  color: black;
+}
+
+select:focus {
+  outline-style: solid;
+  outline-width: 1px;
+  color: black;
+  outline-color: black;
 }

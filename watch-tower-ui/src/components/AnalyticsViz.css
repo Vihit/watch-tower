@@ -1,0 +1,10 @@
+.analytics-actual {
+  background-color: white;
+  min-height: 92vh;
+  max-height: 92vh;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

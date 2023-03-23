@@ -1,0 +1,20 @@
+.viz-option {
+  /* width: 50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding: 20px;
+  cursor: pointer;
+  margin-top: 1px;
+  color: var(--black);
+}
+
+.viz-option > i {
+  text-shadow: 2px 2px #bcc1c56f;
+}
+
+.viz-option-dragging {
+  background-color: rgba(0, 0, 0, 0.211);
+  opacity: 0.5;
+}
