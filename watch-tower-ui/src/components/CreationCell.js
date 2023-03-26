@@ -34,7 +34,8 @@ function CreationCell(props) {
       style={{ width: "calc(100%/" + props.totalCells + ")" }}
       onClick={cellClicked}
     >
-      {viz !== "" && <i className={"fa-solid " + viz}></i>}
+      {/* {viz !== "" && <i className={"fa-solid " + viz}></i>} */}
+      {viz !== "" && <div className={"cell-img " + viz + "-png"}></div>}
       <div className="cell-name">{props.conf.name}</div>
     </div>
   );

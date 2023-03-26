@@ -17,7 +17,8 @@ function VizOption(props) {
       ref={drag}
       className={"viz-option " + (isDragging ? "viz-option-dragging" : "")}
     >
-      <i className={"fa-solid " + props.type}></i>
+      {/* <i className={"fa-solid " + props.type}></i> */}
+      <div className={"viz-img " + props.type + "-png"}></div>
     </div>
   );
 }

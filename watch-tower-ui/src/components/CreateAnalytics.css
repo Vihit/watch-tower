@@ -124,8 +124,11 @@
 
 .viz-option-container {
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .component-header {

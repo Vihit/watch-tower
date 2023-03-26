@@ -13,15 +13,31 @@ import { config } from "./components/config";
 function App() {
   const [job, setJob] = useState({});
   const [jobs, setJobs] = useState([]);
+  const [alert, setAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState("");
   const [loggedIn, setLoggedIn] = useState(
-    localStorage.getItem("access") != null ? true : false
+    localStorage.getItem("access") != "undefined" &&
+      localStorage.getItem("access") != null
+      ? true
+      : false
   );
 
   useEffect(() => {
+    console.log(localStorage.getItem("access"));
     setInterval(() => {
       renewToken();
     }, 500000);
   });
+
+  function raiseAlert(type, message) {
+    setAlert(true);
+    setAlertContent(message);
+    const timeId = setTimeout(() => {
+      setAlert(false);
+      setAlertContent("");
+    }, 2000);
+  }
+
   function renewToken() {
     console.log("Refreshing Token");
     let token = JSON.parse(localStorage.getItem("access"));
@@ -60,8 +76,18 @@ function App() {
 
   return (
     <div>
+      <div className={"notification" + (alert ? "" : " notification-hidden")}>
+        <div className="notif-icon">
+          <i className="fa-solid fa-circle-check"></i>
+        </div>
+        <div className="not-msg">
+          <div>{alertContent}</div>
+        </div>
+      </div>
       <Navbar isLoggedIn={loggedIn} onLogout={logoutHandler}></Navbar>
-      {!loggedIn ? <Login onLogin={loginHandler}></Login> : null}
+      {!loggedIn ? (
+        <Login raiseAlert={raiseAlert} onLogin={loginHandler}></Login>
+      ) : null}
       {loggedIn && (
         <div>
           <div>
@@ -72,13 +98,19 @@ function App() {
             ></Route>
           </div>
           <div>
-            <Route exact path="/analytics-viz" component={AnalyticsViz}></Route>
+            <Route exact path="/analytics-viz">
+              <AnalyticsViz raiseAlert={raiseAlert}></AnalyticsViz>
+            </Route>
           </div>
           <div>
-            <Route exact path="/dashboard" component={Dashboard}></Route>
+            <Route exact path="/dashboard">
+              <Dashboard raiseAlert={raiseAlert}></Dashboard>
+            </Route>
           </div>
           <div>
-            <Route exact path="/" component={Dashboard}></Route>
+            <Route exact path="/">
+              <Dashboard raiseAlert={raiseAlert}></Dashboard>
+            </Route>
           </div>
         </div>
       )}

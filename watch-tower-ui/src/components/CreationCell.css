@@ -24,3 +24,10 @@
 .clicked-cell {
   background-color: rgba(255, 149, 111, 0.439);
 }
+
+.cell-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 60px;
+  width: 60px;
+}

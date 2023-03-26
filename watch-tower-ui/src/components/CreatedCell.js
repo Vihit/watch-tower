@@ -3,6 +3,7 @@ import "./CreatedCell.css";
 import LineChart from "./vizs/LineChart";
 import PieChart from "./vizs/PieChart";
 import StatValue from "./vizs/StatValue";
+import Table from "./vizs/VizTable";
 
 function CreatedCell(props) {
   return (
@@ -18,6 +19,9 @@ function CreatedCell(props) {
       )}
       {props.conf.type === "fa-chart-line" && (
         <LineChart title={props.conf.name} conf={props.conf}></LineChart>
+      )}
+      {props.conf.type === "fa-table" && (
+        <Table title={props.conf.name} conf={props.conf}></Table>
       )}
     </div>
   );

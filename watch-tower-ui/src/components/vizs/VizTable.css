@@ -1,0 +1,9 @@
+.tbl-viz {
+  height: 100%;
+  width: 100%;
+}
+
+.super-app-theme--header {
+  background-color: black;
+  color: white;
+}

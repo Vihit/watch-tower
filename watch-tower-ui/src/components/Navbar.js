@@ -5,8 +5,7 @@ import { config } from "./config";
 
 function Navbar(props) {
   const [accountClick, setAccountClick] = useState(false);
-  const [alert, setAlert] = useState(false);
-  const [alertContent, setAlertContent] = useState("");
+
   function handleAccountClick() {
     setAccountClick(!accountClick);
   }
@@ -19,13 +18,6 @@ function Navbar(props) {
   if (props.isLoggedIn) {
     return (
       <div className="navbar">
-        <div
-          className={
-            "team-notification" + (alert ? "" : " team-notification-hidden")
-          }
-        >
-          <div>{alertContent}</div>
-        </div>
         <div className="logo">
           <div className="appname">WatchTower</div>
         </div>

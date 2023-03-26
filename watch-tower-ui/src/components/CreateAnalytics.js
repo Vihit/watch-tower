@@ -308,8 +308,10 @@ function CreateAnalytics() {
                   <VizOption type="fa-chart-line"></VizOption>
                   <VizOption type="fa-chart-simple"></VizOption>
                   <VizOption type="fa-chart-pie"></VizOption>
-                  <VizOption type="fa-chart-area"></VizOption>
                   <VizOption type="fa-font"></VizOption>
+                </div>
+                <div className="viz-option-container">
+                  <VizOption type="fa-table"></VizOption>
                 </div>
               </div>
             )}

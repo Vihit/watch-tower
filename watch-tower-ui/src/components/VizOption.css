@@ -3,10 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
-  padding: 20px;
+  /* padding: 20px; */
   cursor: pointer;
-  margin-top: 1px;
+  margin-top: 10px;
   color: var(--black);
 }
 
@@ -17,4 +16,31 @@
 .viz-option-dragging {
   background-color: rgba(0, 0, 0, 0.211);
   opacity: 0.5;
+}
+
+.viz-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+}
+
+.fa-chart-simple-png {
+  background-image: url("../../public/bar-graph.png");
+}
+
+.fa-chart-pie-png {
+  background-image: url("../../public/pie-chart.png");
+}
+
+.fa-chart-line-png {
+  background-image: url("../../public/line-chart.png");
+}
+
+.fa-font-png {
+  background-image: url("../../public/text.png");
+}
+
+.fa-table-png {
+  background-image: url("../../public/table.png");
 }
