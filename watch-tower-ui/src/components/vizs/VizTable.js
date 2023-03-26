@@ -3,9 +3,11 @@ import { config } from "../config";
 import { useEffect, useState } from "react";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
+import MaterialReactTable from "material-react-table";
 
 function VizTable(props) {
   const [chartData, setChartData] = useState({ rows: [], header: [] });
+  var matCols = [];
 
   useEffect(() => {
     pullData();
@@ -43,9 +45,10 @@ function VizTable(props) {
           cols.push({
             field: col,
             headerName: col,
-            width: 90,
+            width: 1200,
             headerClassName: "super-app-theme--header",
           });
+          matCols.push({ accessorKey: col, header: col });
         });
         actualData.forEach((data, idx) => {
           let obj = {};
@@ -59,7 +62,7 @@ function VizTable(props) {
         });
 
         setChartData({
-          header: cols,
+          header: matCols,
           rows: rows,
         });
       });
@@ -67,8 +70,9 @@ function VizTable(props) {
 
   return (
     <div className="tbl-viz">
-      <Box sx={{ height: "100%", width: "100%" }}>
+      {/* <Box sx={{ height: "100%", width: "100%" }}>
         <DataGrid
+          // autoHeight
           rows={chartData.rows}
           columns={chartData.header}
           initialState={{
@@ -91,7 +95,29 @@ function VizTable(props) {
             },
           }}
         />
-      </Box>
+      </Box> */}
+      <MaterialReactTable
+        columns={chartData.header}
+        data={chartData.rows}
+        enableStickyHeader
+        enableStickyFooter
+        muiTableContainerProps={{
+          sx: { maxHeight: "550px", maxWidth: "100%", overflowX: "auto" },
+        }}
+        initialState={{ density: "compact" }}
+        muiTableHeadCellProps={{
+          sx: {
+            fontWeight: "bold",
+            fontSize: "14px",
+            backgroundColor: "var(--white)",
+            color: "var(--dark)",
+            border: "1px solid",
+          },
+        }}
+        muiTableBodyCellProps={{
+          sx: { backgroundColor: "var(--light)", border: "0.1px solid white" },
+        }}
+      ></MaterialReactTable>
     </div>
   );
 }

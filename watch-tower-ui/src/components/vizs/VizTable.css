@@ -1,6 +1,9 @@
 .tbl-viz {
   height: 100%;
   width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  /* max-width: 800px; */
 }
 
 .super-app-theme--header {
