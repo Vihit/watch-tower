@@ -2,9 +2,11 @@ import { useState } from "react";
 import "./Navbar.css";
 import { Link, useHistory } from "react-router-dom";
 import { config } from "./config";
+import Settings from "./Settings";
 
 function Navbar(props) {
   const [accountClick, setAccountClick] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   function handleAccountClick() {
     setAccountClick(!accountClick);
@@ -15,9 +17,11 @@ function Navbar(props) {
     props.onLogout();
   }
 
+  function goToSettings() {}
   if (props.isLoggedIn) {
     return (
       <div className="navbar">
+        {showSettings && <Settings closeSettings={setShowSettings}></Settings>}
         <div className="logo">
           <div className="appname">WatchTower</div>
         </div>
@@ -34,6 +38,9 @@ function Navbar(props) {
         </div>
         <ul className={"dropdown " + (accountClick ? "show" : "")}>
           <li className="dropdown-item user">Vihit</li>
+          <li className="dropdown-item" onClick={() => setShowSettings(true)}>
+            Settings
+          </li>
           <li className="dropdown-item" onClick={handleLogout}>
             Logout
           </li>

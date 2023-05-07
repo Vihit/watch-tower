@@ -1,0 +1,68 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  /* height: 40%; */
+  width: 40%;
+  background-color: var(--main);
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 3%;
+  box-shadow: 0 0 0 99999px rgba(255, 255, 255, 0.8);
+}
+
+.grow-20 {
+  height: 10%;
+}
+
+.set-ctrl {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.set-label {
+  width: 25%;
+  color: white;
+  font-size: 14px;
+}
+
+.set-text {
+  width: 60%;
+}
+
+.set-head {
+  font-size: 25px;
+  color: white;
+  margin-top: 5%;
+}
+
+.set-text > input {
+  border-radius: 0px;
+  height: 80%;
+  width: 100%;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.set-text > select {
+  border-radius: 0px;
+  height: 80%;
+  width: 101%;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.set-close {
+  color: white;
+  position: fixed;
+  top: 31%;
+  left: 68%;
+  cursor: pointer;
+}

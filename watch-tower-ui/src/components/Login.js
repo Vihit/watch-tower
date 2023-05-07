@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
 import { config } from "./config";
 import jwt from "jwt-decode";
@@ -6,6 +6,23 @@ import jwt from "jwt-decode";
 function Login(props) {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
+
+  useEffect(() => {
+    if (
+      window.name === "" ||
+      JSON.parse(window.name).access_token == undefined
+    ) {
+    } else {
+      console.log(window.name);
+      let accessToken = JSON.parse(window.name);
+      localStorage.setItem("access", window.name);
+      localStorage.setItem(
+        "user",
+        JSON.stringify(jwt(accessToken.access_token))
+      );
+      props.onLogin();
+    }
+  });
 
   function loginHandler() {
     let user = { username, pwd };

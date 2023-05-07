@@ -9,6 +9,7 @@ import AnalyticsViz from "./components/AnalyticsViz";
 import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
 import { config } from "./components/config";
+import jwt from "jwt-decode";
 
 function App() {
   const [job, setJob] = useState({});
@@ -17,13 +18,17 @@ function App() {
   const [alertContent, setAlertContent] = useState("");
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("access") != "undefined" &&
-      localStorage.getItem("access") != null
+      localStorage.getItem("access") != null &&
+      jwt(JSON.parse(localStorage.getItem("access"))["access_token"]).exp *
+        1000 >
+        Date.now()
       ? true
       : false
   );
 
+  console.log(localStorage.getItem("access"));
+
   useEffect(() => {
-    console.log(localStorage.getItem("access"));
     setInterval(() => {
       renewToken();
     }, 500000);
@@ -70,6 +75,7 @@ function App() {
   }
 
   function logoutHandler() {
+    window.name = "";
     localStorage.clear();
     setLoggedIn(false);
   }

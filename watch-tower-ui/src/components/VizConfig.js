@@ -153,9 +153,8 @@ function VizConfig(props) {
       selectStmt =
         "SELECT  " +
         (selectedGroupCols.length > 0
-          ? selectedGroupCols.reduce((a, b) => a + "," + b)
+          ? selectedGroupCols.reduce((a, b) => a + "," + b) + ","
           : "") +
-        "," +
         (selectedMeasures.length > 0
           ? selectedMeasures
               .map((m) => m.measure + "(" + m.col + ")")
