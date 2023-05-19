@@ -31,12 +31,23 @@ function VizConfig(props) {
   }, []);
 
   function parseQuery(query) {
-    let tableName =
+    let tblName =
       query.split(" FROM ").length > 1
         ? query.split(" FROM ")[1].split(" ")[0]
         : "";
-    setForm(props.forms.filter((f) => f.name === tableName)[0].id);
-    formSelected(props.forms.filter((f) => f.name === tableName)[0].id);
+    let tableName = tblName.includes("f_mstr")
+      ? tblName.split("f_mstr")[1].split("_lgs")[0]
+      : tblName.split("f_")[1].split("_lgs")[0];
+    setForm(
+      props.forms.filter(
+        (f) => f.name.toLowerCase().replaceAll(" ", "_") === tableName
+      )[0].id
+    );
+    formSelected(
+      props.forms.filter(
+        (f) => f.name.toLowerCase().replaceAll(" ", "_") === tableName
+      )[0].id
+    );
 
     let groupedCols =
       props.conf.query.split(" group by ").length > 1
@@ -150,6 +161,20 @@ function VizConfig(props) {
           }
         });
       });
+      var tableName =
+        props.forms.filter((f) => f.id == form)[0].type === "master"
+          ? "f_mstr_" +
+            props.forms
+              .filter((f) => f.id == form)[0]
+              .name.toLowerCase()
+              .replaceAll(" ", "_") +
+            "_lgs"
+          : "f_" +
+            props.forms
+              .filter((f) => f.id == form)[0]
+              .name.toLowerCase()
+              .replaceAll(" ", "_") +
+            "_lgs";
       selectStmt =
         "SELECT  " +
         (selectedGroupCols.length > 0
@@ -161,13 +186,14 @@ function VizConfig(props) {
               .reduce((a, b) => a + "," + b)
           : "") +
         "  FROM " +
-        props.forms.filter((f) => f.id == form)[0].name +
+        tableName +
         " WHERE " +
         filterConds +
         (selectedGroupCols.length > 0
           ? " group by " + selectedGroupCols.reduce((a, b) => a + "," + b)
           : "");
     }
+    console.log(selectStmt);
     return selectStmt;
   }
 

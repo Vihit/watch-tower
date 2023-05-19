@@ -174,7 +174,7 @@ function CreateAnalytics() {
     });
   }
   function getForms() {
-    fetch(config.apiUrl + "watchtower/tables", {
+    fetch(config.apiUrl + "forms/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -231,13 +231,15 @@ function CreateAnalytics() {
           <div className="app-name-container">
             <select value={app} onChange={(e) => setApp(e.target.value)}>
               <option value={""}>Select an App</option>
-              {apps.map((app, idx) => {
-                return (
-                  <option key={idx} value={app.id}>
-                    {app.name}
-                  </option>
-                );
-              })}
+              {apps
+                .filter((a) => a.type === "internal")
+                .map((app, idx) => {
+                  return (
+                    <option key={idx} value={app.id}>
+                      {app.name}
+                    </option>
+                  );
+                })}
             </select>
           </div>
           <div className="layout-container">
@@ -391,15 +393,7 @@ function CreateAnalytics() {
           key={currCell.row + "" + currCell.col}
           saveConf={saveConfFor}
           app={apps.filter((a) => a.id == app)[0]}
-          forms={forms
-            .filter((f) => true)
-            .map((f) => {
-              return {
-                id: f.data.tbl,
-                name: f.data.tbl,
-                columns: f.data.columns,
-              };
-            })}
+          forms={forms.filter((f) => f.app.id == app)}
         ></VizConfig>
       )}
       {showPreview && (
