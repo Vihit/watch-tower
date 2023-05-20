@@ -24,6 +24,13 @@ function Login(props) {
     }
   });
 
+  function pressedKey(e) {
+    console.log("key down");
+    if (e.key === "Enter") {
+      loginHandler();
+    }
+  }
+
   function loginHandler() {
     let user = { username, pwd };
     var formBody = [];
@@ -226,6 +233,7 @@ function Login(props) {
               type="password"
               placeholder="password"
               onChange={(e) => setPwd(e.target.value)}
+              onKeyDown={(e) => pressedKey(e)}
             ></input>
           </div>
           <div className="submit" onClick={loginHandler}>

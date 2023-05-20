@@ -39,7 +39,10 @@ function BarChart(props) {
       })
       .then((actualData) => {
         const query = props.conf.query;
-        let groupByCols = query.split("group by ")[1].split(",");
+        let groupByCols = query
+          .split("group by ")[1]
+          .split(" order by ")[0]
+          .split(",");
         let selectCols = query
           .split("from")[0]
           .split("  ")[1]

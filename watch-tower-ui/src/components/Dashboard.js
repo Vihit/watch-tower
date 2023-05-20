@@ -24,7 +24,10 @@ function Dashboard(props) {
     })
       .then((response) => {
         if (response.ok) {
+          props.raiseAlert("green", "Apps loaded!");
           return response.json();
+        } else {
+          props.raiseAlert("red", "Error loading Apps!");
         }
       })
       .then((actualData) => {

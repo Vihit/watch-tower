@@ -16,6 +16,7 @@ function App() {
   const [jobs, setJobs] = useState([]);
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
+  const [color, setColor] = useState("");
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("access") != "undefined" &&
       localStorage.getItem("access") != null &&
@@ -33,15 +34,6 @@ function App() {
       renewToken();
     }, 500000);
   });
-
-  function raiseAlert(type, message) {
-    setAlert(true);
-    setAlertContent(message);
-    const timeId = setTimeout(() => {
-      setAlert(false);
-      setAlertContent("");
-    }, 2000);
-  }
 
   function renewToken() {
     console.log("Refreshing Token");
@@ -80,11 +72,29 @@ function App() {
     setLoggedIn(false);
   }
 
+  function raiseAlert(type, message) {
+    setAlert(true);
+    setAlertContent(message);
+    setColor("var(--" + type + ")");
+    const timeId = setTimeout(() => {
+      setAlert(false);
+      setAlertContent("");
+    }, 2000);
+  }
+
   return (
     <div>
-      <div className={"notification" + (alert ? "" : " notification-hidden")}>
+      <div
+        style={{ backgroundColor: color }}
+        className={"notification " + (alert ? "" : " notification-hidden")}
+      >
         <div className="notif-icon">
-          <i className="fa-solid fa-circle-check"></i>
+          {color === "var(--green)" && (
+            <i className="fa-solid fa-circle-check"></i>
+          )}
+          {color === "var(--red)" && (
+            <i className="fa-solid fa-circle-exclamation"></i>
+          )}
         </div>
         <div className="not-msg">
           <div>{alertContent}</div>
@@ -97,11 +107,9 @@ function App() {
       {loggedIn && (
         <div>
           <div>
-            <Route
-              exact
-              path="/create-analytics"
-              component={CreateAnalytics}
-            ></Route>
+            <Route exact path="/create-analytics">
+              <CreateAnalytics raiseAlert={raiseAlert}></CreateAnalytics>
+            </Route>
           </div>
           <div>
             <Route exact path="/analytics-viz">

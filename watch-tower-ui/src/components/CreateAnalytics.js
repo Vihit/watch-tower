@@ -12,7 +12,7 @@ import VizConfig from "./VizConfig";
 import VizOption from "./VizOption";
 import { config } from "./config";
 
-function CreateAnalytics() {
+function CreateAnalytics(props) {
   const [layout, setLayout] = useState([]);
   const [confVisible, setConfVisible] = useState(false);
   const [conf, setConf] = useState([]);
@@ -216,6 +216,7 @@ function CreateAnalytics() {
     })
       .then((response) => {
         if (response.ok) {
+          props.raiseAlert("green", "Viz updated!");
           return response.json();
         }
       })
