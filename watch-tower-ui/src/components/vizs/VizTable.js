@@ -1,20 +1,20 @@
 import "./VizTable.css";
 import { config } from "../config";
 import { useEffect, useState } from "react";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import Box from "@mui/material/Box";
 import MaterialReactTable from "material-react-table";
+import { Typography } from "@mui/material/";
 
 function VizTable(props) {
   const [chartData, setChartData] = useState({ rows: [], header: [] });
   var matCols = [];
-
+  console.log(props);
   useEffect(() => {
     pullData();
   }, []);
 
   function pullData() {
-    fetch(config.apiUrl + "watchtower/query/" + props.conf.query, {
+    let url = encodeURI(config.apiUrl + "watchtower/query/" + props.conf.query);
+    fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -70,37 +70,28 @@ function VizTable(props) {
 
   return (
     <div className="tbl-viz">
-      {/* <Box sx={{ height: "100%", width: "100%" }}>
-        <DataGrid
-          // autoHeight
-          rows={chartData.rows}
-          columns={chartData.header}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 100,
-              },
-            },
-          }}
-          pageSizeOptions={[100]}
-          density="compact"
-          showCellVerticalBorder
-          showColumnVerticalBorder
-          sx={{
-            boxShadow: 2,
-            border: 2,
-            borderColor: "primary.light",
-            "& .MuiDataGrid-cell:hover": {
-              color: "primary.main",
-            },
-          }}
-        />
-      </Box> */}
       <MaterialReactTable
         columns={chartData.header}
         data={chartData.rows}
         enableStickyHeader
         enableStickyFooter
+        enableTopToolbar={true}
+        renderTopToolbarCustomActions={({ table }) => (
+          <Typography
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              fontFamily: "Poppins",
+              fontWeight: "bold",
+              color: "#666",
+              background: "var(--grey)",
+              padding: "2px 5px",
+            }}
+          >
+            {props.title}
+          </Typography>
+        )}
         muiTableContainerProps={{
           sx: { maxHeight: "550px", maxWidth: "100%", overflowX: "auto" },
         }}

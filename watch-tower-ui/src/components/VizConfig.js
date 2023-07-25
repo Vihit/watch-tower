@@ -206,6 +206,7 @@ function VizConfig(props) {
       obj["advanced"] = true;
       obj["query"] = value;
       if (value === "") obj["advanced"] = false;
+      console.log(obj);
     } else if (what === "final") {
       //
     } else {
@@ -225,6 +226,7 @@ function VizConfig(props) {
       } else if (what === "advanced.query") {
         obj["advanced"] = true;
         obj["query"] = value;
+        if (value === "") obj["advanced"] = false;
       } else if (what === "final") {
         //
       } else {
